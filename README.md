@@ -1,4 +1,5 @@
 # cryptoCrowd
+Playing with Ethereum Blockchain
 
 A Crowd Founding platform ( e.g kickstarter) as dApp - on the Ethereum blockchain
 
