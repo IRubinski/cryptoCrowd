@@ -11,6 +11,8 @@ class RequestIndex extends Component {
     const campaign = Campaign(address);
     // return the length of the requests
     const requestCount = await campaign.methods.getRequestsCount().call();
+
+    const approveCount = await campaign.methods.approveCount().call();
     //Solidity cant yet return array of struct
     const requests = await Promise.all(
       Array(parseInt(requestCount))
@@ -19,7 +21,7 @@ class RequestIndex extends Component {
           return campaign.methods.requests(index).call();
         })
     );
-    return { address, requests, requestCount };
+    return { address, requests, requestCount, approveCount };
   }
 
   renderRows() {
@@ -30,6 +32,7 @@ class RequestIndex extends Component {
           id={index}
           request={request}
           address={this.props.address}
+          approveCount={this.props.approveCount}
         />
       );
     });
